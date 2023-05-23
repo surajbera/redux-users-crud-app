@@ -27,6 +27,7 @@ const usersSlice = createSlice({
         state.error = null
       })
       .addCase(getUsers.rejected, (state, action) => {
+        console.log('Rejected state')
         state.loading = false
         state.error = action.error.message || 'Something went wrong'
       })
