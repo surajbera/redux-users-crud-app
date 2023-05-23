@@ -1,5 +1,5 @@
 /* components */
-import { UserForm, UserList } from '@/components/Users'
+import { UserForm, UserList } from 'src/components/Users'
 
 /* styles */
 import './App.css'
