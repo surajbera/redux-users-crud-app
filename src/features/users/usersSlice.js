@@ -7,7 +7,7 @@ import { getUsers, getUser, updateUser, deleteUser } from './usersThunks'
 const initialState = {
   users: [],
   selectedUser: null,
-  loading: false,
+  isLoading: false,
   error: null,
 }
 
@@ -18,61 +18,61 @@ const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getUsers.pending, (state) => {
-        state.loading = true
-        state.error = null
+        state.isLoading = true
+        state.isError = null
       })
       .addCase(getUsers.fulfilled, (state, action) => {
-        state.loading = false
+        state.isLoading = false
         state.users = action.payload
-        state.error = null
+        state.isError = null
       })
       .addCase(getUsers.rejected, (state, action) => {
         console.log('Rejected state')
-        state.loading = false
-        state.error = action.error.message || 'Something went wrong'
+        state.isLoading = false
+        state.isError = action.error.message || 'Something went wrong'
       })
       .addCase(getUser.pending, (state) => {
-        state.loading = true
-        state.error = null
+        state.isLoading = true
+        state.isError = null
       })
       .addCase(getUser.fulfilled, (state, action) => {
-        state.loading = false
+        state.isLoading = false
         state.selectedUser = action.payload
-        state.error = null
+        state.isError = null
       })
       .addCase(getUser.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.error.message || 'Something went wrong'
+        state.isLoading = false
+        state.isError = action.error.message || 'Something went wrong'
       })
       .addCase(updateUser.pending, (state) => {
-        state.loading = true
-        state.error = null
+        state.isLoading = true
+        state.isError = null
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.loading = false
-        state.error = null
+        state.isLoading = false
+        state.isError = null
         state.selectedUser = null
         const updatedUser = action.payload
         state.users = state.users.map((user) => (user.id === updatedUser.id ? updatedUser : user))
       })
       .addCase(updateUser.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.error.message || 'Something went wrong'
+        state.isLoading = false
+        state.isError = action.error.message || 'Something went wrong'
       })
       .addCase(deleteUser.pending, (state) => {
-        state.loading = true
-        state.error = null
+        state.isLoading = true
+        state.isError = null
       })
       .addCase(deleteUser.fulfilled, (state, action) => {
-        state.loading = false
+        state.isLoading = false
         const userId = action.payload
         state.users = state.users.filter((user) => user.id !== userId)
         state.selectedUser = null
-        state.error = null
+        state.isError = null
       })
       .addCase(deleteUser.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.error.message || 'Something went wrong'
+        state.isLoading = false
+        state.isError = action.error.message || 'Something went wrong'
       })
   },
 })

@@ -19,13 +19,7 @@ const UserList = () => {
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Error</div>
-  return (
-    <>
-      {users.map((user) => (
-        <div key={user.id}>{user.name}</div>
-      ))}
-    </>
-  )
+  return <>{users.length > 1 && users.map((user) => <div key={user.id}>{user.name}</div>)}</>
 }
 
 export default UserList
