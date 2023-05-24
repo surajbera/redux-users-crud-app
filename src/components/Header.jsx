@@ -17,7 +17,7 @@ const Header = () => {
   }
 
   return (
-    <header className='shadow-md py-4'>
+    <header className='shadow-md py-6'>
       <div className='max-w-5xl mx-auto px-6'>
         <div className='flex justify-between items-center'>
           <div className='logo'>

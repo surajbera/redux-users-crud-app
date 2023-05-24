@@ -25,9 +25,11 @@ const Users = () => {
   if (users.length > 0)
     return (
       <div className='max-w-5xl mx-auto px-6'>
-        {users.map((user) => (
-          <UserCard key={user.id} user={user} />
-        ))}
+        <div className='grid grid-cols-3 gap-4'>
+          {users.map((user) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </div>
       </div>
     )
 }
