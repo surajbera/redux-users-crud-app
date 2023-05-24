@@ -17,7 +17,7 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <header className='flex justify-between'>
       <div className='logo'>
         <Link to='/'>Users App</Link>
       </div>
