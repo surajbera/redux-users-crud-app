@@ -1,11 +1,13 @@
 /* libraries */
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 /* utilities */
 import { selectUsers } from 'src/features/users/usersSlice'
 import { getUsers } from 'src/features/users/usersThunks'
+
+/* components */
+import { UserCard } from 'src/components'
 
 const Users = () => {
   const dispatch = useDispatch()
@@ -18,14 +20,16 @@ const Users = () => {
     dispatch(getUsers())
   }, [dispatch])
 
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Error</div>
+  if (isLoading) return <div className='max-w-5xl mx-auto px-6'>Loading...</div>
+  if (isError) return <div className='max-w-5xl mx-auto px-6'>Error</div>
   if (users.length > 0)
-    return users.map((user) => (
-      <div key={user.id}>
-        <Link to={`/users/${user.id}`}>{user.name}</Link>
+    return (
+      <div className='max-w-5xl mx-auto px-6'>
+        {users.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
       </div>
-    ))
+    )
 }
 
 export default Users
