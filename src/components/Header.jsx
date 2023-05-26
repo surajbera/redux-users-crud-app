@@ -26,13 +26,13 @@ const Header = () => {
   return (
     <header className='shadow-md py-6'>
       <div className='max-w-5xl mx-auto px-6'>
-        <div className='flex justify-between items-center'>
-          <div className='logo'>
+        <div className='flex flex-col gap-3'>
+          <div className='logo text-center'>
             <Link to='/' className='text-2xl font-bold italic hover:underline'>
               Users App
             </Link>
           </div>
-          <div className='header-right-wrap flex gap-6 items-center'>
+          <div className='header-right-wrap flex gap-6 items-center justify-center'>
             <div className='search-bar-wrap'>
               <form onSubmit={onSubmit}>
                 <input
