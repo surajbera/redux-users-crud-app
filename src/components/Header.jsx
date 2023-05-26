@@ -1,16 +1,17 @@
 /* libraries */
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { BiSun } from 'react-icons/bi'
-import { useDispatch } from 'react-redux'
+import { BiSun, BiMoon } from 'react-icons/bi'
+import { useDispatch, useSelector } from 'react-redux'
 
 /* utilities */
-import { toggleTheme } from 'src/features/theme/themeSlice'
+import { toggleTheme, selectTheme } from 'src/features/theme/themeSlice'
 
 const Header = () => {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const dispatch = useDispatch()
+  const theme = useSelector(selectTheme)
 
   const handleChange = (evt) => {
     setSearchTerm(evt.target.value)
@@ -32,14 +33,6 @@ const Header = () => {
             </Link>
           </div>
           <div className='header-right-wrap flex gap-6 items-center'>
-            <div
-              className='theme-switch cursor-pointer'
-              onClick={() => {
-                dispatch(toggleTheme())
-              }}
-            >
-              <BiSun className='text-2xl text-slate-500' />
-            </div>
             <div className='search-bar-wrap'>
               <form onSubmit={onSubmit}>
                 <input
@@ -50,6 +43,18 @@ const Header = () => {
                   className='shadow-md h-16 px-3 outline-none text-slate-500 focus:shadow-lg transition w-25 rounded-md text-sm'
                 />
               </form>
+            </div>
+            <div
+              className='theme-switch cursor-pointer'
+              onClick={() => {
+                dispatch(toggleTheme())
+              }}
+            >
+              {theme === 'light' ? (
+                <BiSun className='text-2xl text-slate-500' />
+              ) : (
+                <BiMoon className='text-2xl text-slate-500' />
+              )}
             </div>
           </div>
         </div>
