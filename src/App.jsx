@@ -31,7 +31,7 @@ function App() {
     <>
       <Router>
         <Header />
-        <main className='py-4'>
+        <main className='py-4 dark:bg-stone-600 flex-grow'>
           <Routes>
             <Route exact path='/users' element={<Users />} />
             <Route exact path='/users/:id' element={<UserDetail />} />

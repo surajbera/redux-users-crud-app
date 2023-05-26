@@ -22,8 +22,10 @@ const Search = () => {
     dispatch(getUsers())
   }, [dispatch])
 
-  if (isLoading) return <div className='max-w-5xl mx-auto px-6 text-base'>Loading...</div>
-  if (isError) return <div className='max-w-5xl mx-auto px-6 text-base'>Error...</div>
+  if (isLoading)
+    return <div className='max-w-5xl mx-auto px-6 text-base dark:text-white'>Loading...</div>
+  if (isError)
+    return <div className='max-w-5xl mx-auto px-6 text-base dark:text-white'>Error...</div>
 
   if (searchTerm === null) {
     return <div className='max-w-5xl mx-auto px-6 text-base'>Please enter a search term...</div>

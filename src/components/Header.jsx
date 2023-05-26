@@ -24,11 +24,11 @@ const Header = () => {
   }
 
   return (
-    <header className='shadow-md py-6'>
+    <header className='shadow-md py-6 bg-white dark:bg-slate-700'>
       <div className='max-w-5xl mx-auto px-6'>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 littleSmall:flex-row littleSmall:justify-between'>
           <div className='logo text-center'>
-            <Link to='/' className='text-2xl font-bold italic hover:underline'>
+            <Link to='/' className='text-2xl font-bold italic hover:underline dark:text-white'>
               Users App
             </Link>
           </div>
@@ -40,7 +40,7 @@ const Header = () => {
                   placeholder='Search...'
                   value={searchTerm}
                   onChange={handleChange}
-                  className='shadow-md h-16 px-3 outline-none text-slate-500 focus:shadow-lg transition w-25 rounded-md text-sm'
+                  className='shadow-md h-16 px-3 outline-none text-slate-500 focus:shadow-lg transition w-25 rounded-md text-sm dark:bg-slate-400 dark:text-white'
                 />
               </form>
             </div>
@@ -51,9 +51,9 @@ const Header = () => {
               }}
             >
               {theme === 'light' ? (
-                <BiSun className='text-2xl text-slate-500' />
+                <BiSun className='text-2xl text-slate-500 dark:text-white' />
               ) : (
-                <BiMoon className='text-2xl text-slate-500' />
+                <BiMoon className='text-2xl text-slate-500 dark:text-white' />
               )}
             </div>
           </div>
