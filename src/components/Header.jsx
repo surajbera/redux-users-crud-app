@@ -1,10 +1,16 @@
 /* libraries */
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { BiSun } from 'react-icons/bi'
+import { useDispatch } from 'react-redux'
+
+/* utilities */
+import { toggleTheme } from 'src/features/theme/themeSlice'
 
 const Header = () => {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
+  const dispatch = useDispatch()
 
   const handleChange = (evt) => {
     setSearchTerm(evt.target.value)
@@ -25,16 +31,26 @@ const Header = () => {
               Users App
             </Link>
           </div>
-          <div className='search-bar-wrap'>
-            <form onSubmit={onSubmit}>
-              <input
-                type='text'
-                placeholder='Search...'
-                value={searchTerm}
-                onChange={handleChange}
-                className='shadow h-16 px-3 outline-none text-slate-500 focus:shadow-md transition w-25 rounded-md text-sm'
-              />
-            </form>
+          <div className='header-right-wrap flex gap-6 items-center'>
+            <div
+              className='theme-switch cursor-pointer'
+              onClick={() => {
+                dispatch(toggleTheme())
+              }}
+            >
+              <BiSun className='text-2xl text-slate-500' />
+            </div>
+            <div className='search-bar-wrap'>
+              <form onSubmit={onSubmit}>
+                <input
+                  type='text'
+                  placeholder='Search...'
+                  value={searchTerm}
+                  onChange={handleChange}
+                  className='shadow-md h-16 px-3 outline-none text-slate-500 focus:shadow-lg transition w-25 rounded-md text-sm'
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>
